@@ -34,6 +34,8 @@ DPU_CT519_Lab4_Docker_Compose_By_Khomkrit_Ngeonkham_645162010028
 9.ทำการ Run DockerCompose โดยใช้คำสั่ง
   sudo docker compose up -d
   
+  
+  
 หมายเหตุ
 คำสั่งดู Docker ที่ทำงานอยู่
 sudo docker network ls
