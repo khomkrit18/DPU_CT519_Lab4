@@ -1,0 +1,47 @@
+version: '3.8'
+
+services: 
+  my_web:
+      container_name: my_web 
+      build:
+        context: .
+        dockerfile: Dockerfile
+      depends_on: 
+        - my_db
+      #image: "php8:apache"
+      volumes:
+        - ./www/:/var/www/html/
+      ports:
+        - "80:80"
+      restart: always
+      networks: 
+        Front-Net:
+        Back-Net: 
+          ipv4_address: 10.1.1.11
+
+  my_db:
+      container_name: my_db
+      image: mysql
+      volumes:
+        - ./my-sql-backup:/docker-entrypoint-initdb.d/
+        - ./mysql-conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      restart: always 
+      environment:
+        MYSQL_ROOT_PASSWORD: P@ssw0rd 
+        MYSQL_DATABASE: CT519_Movie
+        MYSQL_USER: kang
+        MYSQL_PASSWORD: P@ssw0rd
+      ports:
+        - "3306:3306"
+      networks: 
+        Back-Net:
+          ipv4_address: 10.1.1.22
+
+networks:
+  Front-Net: 
+  Back-Net:
+    driver: bridge
+    ipam: 
+      driver: default
+      config: 
+        - subnet: "10.1.1.0/24"
