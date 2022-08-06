@@ -34,22 +34,22 @@ DPU_CT519_Lab4_Docker_Compose_By_Khomkrit_Ngeonkham_645162010028
 9.ทำการ Run DockerCompose โดยใช้คำสั่ง
   sudo docker compose up -d
   
-หมายเหตุ
-คำสั่งดู Docker ที่ทำงานอยู่
+10.หมายเหตุ
+
+10.1คำสั่งดู Docker ที่ทำงานอยู่
 sudo docker network ls
 
-สั่งหยุดการทำงาน Docker
-
+10.2สั่งหยุดการทำงาน Docker
 sudo docker stop $(sudo docker ps -aq)
 sudo docker rm $(sudo docker ps -aq)
-คำสั่งหยุดการทำงาน Network Docker
 
+10.3 คำสั่งหยุดการทำงาน Network Docker
 sudo docker network rm dpu_ct519_lab4_Front-Net
 sudo docker network rm dpu_ct519_lab4_Back-Net
-คำสั่งขึ้น Docker ใหม่
+
+10.4คำสั่งขึ้น Docker ใหม่
 sudo docker compose up -d
 
-คำสั่งดูรายละเอียด Network
-
+10.5คำสั่งดูรายละเอียด Network
 sudo docker network inspect dpu_ct519_lab4_Front-Net
 sudo docker network inspect dpu_ct519_lab4_Back-Net
